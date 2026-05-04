@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,94 +30,5 @@
             background: linear-gradient(45deg, #ffb6c1, #ff69b4);
             color: #fff; border: none; padding: 15px 20px;
             border-radius: 50px; font-weight: bold; cursor: pointer;
-            width: 100%; font-size: 1rem; margin-top: 20px;
-            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
-        }
-
-        .star {
-            position: absolute; background: white;
-            border-radius: 50%; opacity: 0.5;
-            animation: twinkle 2s infinite ease-in-out;
-        }
-        @keyframes twinkle { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
-    </style>
-</head>
-<body>
-
-    <script>
-        for (let i = 0; i < 30; i++) {
-            let star = document.createElement('div');
-            star.className = 'star';
-            star.style.width = Math.random() * 3 + 'px';
-            star.style.height = star.style.width;
-            star.style.left = Math.random() * 100 + 'vw';
-            star.style.top = Math.random() * 100 + 'vh';
-            document.body.appendChild(star);
-        }
-    </script>
-
-    <div id="s1">
-        <button class="btn" style="width: auto; padding: 20px 40px;" onclick="go(2)">A LITTLE SURPRISE ✨</button>
-    </div>
-
-    <div id="s2" class="card">
-        <h1>Hello Annu! 😊</h1>
-        <p>
-            Pata nahi ye dosti kahan tak jayegi, par itna zaroor pata hai ki tumse baat karke accha lagta hai. 
-        </p>
-        <button class="btn" onclick="go(3)">Keep Reading ➡</button>
-    </div>
-
-    <div id="s3" class="card">
-        <h1>New Beginnings ✨</h1>
-        <p>
-            Annu, har ek dost ki apni ek jagah hoti hai, par tumhare saath ye shuruat thodi special hai. <br><br>
-            <b>Dost banoge?</b>
-        </p>
-        <button class="btn" onclick="celebrate()">Yes, Why Not! ✨</button>
-        <button class="btn" onclick="go(5)">no sorry</button>
-    </div>
-
-    <div id="s4" class="card">
-        <h1 style="font-size: 3rem;">🌸</h1>
-        <h1>Thank You Annu!</h1>
-        <p>Is sweet shuruat ke liye shukriya. arun is happy to have you as a friend! 😊</p>
-    </div>
-
-    <div id="s5" class="card">
-        <h1 style="font-size: 3rem;">😔</h1>
-        <h1>Oops...</h1>
-        <p>Sorry Annu, for wasting your time.</p>
-    </div>
-
-    <script>
-        function go(n) {
-            document.getElementById('s1').style.display = 'none';
-            document.getElementById('s2').style.display = 'none';
-            document.getElementById('s3').style.display = 'none';
-            document.getElementById('s4').style.display = 'none';
-            document.getElementById('s5').style.display = 'none';
-            document.getElementById('s' + n).style.display = 'block';
-        }
-
-        function celebrate() {
-            go(4);
-            for(let i=0; i<30; i++) {
-                setTimeout(() => {
-                    const f = document.createElement('div');
-                    f.innerHTML = '🌸';
-                    f.style.position = 'absolute';
-                    f.style.left = Math.random() * 100 + 'vw';
-                    f.style.bottom = '-50px';
-                    f.style.fontSize = '25px';
-                    f.style.transition = '3s linear';
-                    document.body.appendChild(f);
-                    setTimeout(() => { f.style.bottom = '110vh'; f.style.opacity = '0'; }, 100);
-                    setTimeout(() => f.remove(), 3000);
-                }, i * 100);
-            }
-        }
-    </script>
-</body>
-      </html>
-  
+            width:
+                
