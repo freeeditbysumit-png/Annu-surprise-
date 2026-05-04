@@ -3,44 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jarvis Special - For Annu</title>
+    <title>Special Surprise</title>
     <style>
         body {
             margin: 0; background: #0a0a1a; color: #fff;
-            font-family: 'Segoe UI', Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             display: flex; justify-content: center; align-items: center;
-            height: 100vh; overflow: hidden;
+            height: 100vh; overflow: hidden; position: relative;
         }
+
+        /* All sections hidden by default except s1 */
+        .section { display: none; text-align: center; width: 85%; max-width: 350px; z-index: 10; }
+        #s1 { display: block; }
 
         .card {
-            width: 85%; max-width: 350px;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 182, 193, 0.3);
-            padding: 25px; border-radius: 20px; text-align: center;
+            padding: 30px; border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            display: none;
+            backdrop-filter: blur(10px);
         }
 
-        #s1 { display: block; border: none; box-shadow: none; background: none; }
-
-        h1 { color: #ffb6c1; font-size: 1.8rem; margin-bottom: 15px; }
+        h1 { color: #ffb6c1; margin-bottom: 15px; font-size: 1.8rem; }
         p { line-height: 1.6; font-size: 1.1rem; color: #f0f0f0; }
 
         .btn {
             background: linear-gradient(45deg, #ffb6c1, #ff69b4);
-            color: #fff; border: none; padding: 15px 20px;
+            color: #fff; border: none; padding: 15px 25px;
             border-radius: 50px; font-weight: bold; cursor: pointer;
-            width: 100%; font-size: 1rem; margin-top: 20px;
+            width: 100%; font-size: 1.1rem; margin-top: 20px;
             box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
-            transition: 0.2s;
+            transition: 0.3s;
         }
-        
-        .btn:active { transform: scale(0.95); }
+        .btn:active { transform: scale(0.9); }
 
         .star {
-            position: absolute; background: white;
-            border-radius: 50%; opacity: 0.5;
-            animation: twinkle 2s infinite ease-in-out;
+            position: absolute; background: white; border-radius: 50%;
+            opacity: 0.5; animation: twinkle 2s infinite ease-in-out;
         }
         @keyframes twinkle { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
     </style>
@@ -48,7 +47,7 @@
 <body>
 
     <script>
-        for (let i = 0; i < 30; i++) {
+        for (let i = 0; i < 40; i++) {
             let star = document.createElement('div');
             star.className = 'star';
             star.style.width = Math.random() * 3 + 'px';
@@ -59,49 +58,52 @@
         }
     </script>
 
-    <div id="s1">
-        <button class="btn" style="width: auto; padding: 20px 40px;" onclick="go(2)">A LITTLE SURPRISE ✨</button>
+    <div id="s1" class="section">
+        <button class="btn" style="width: auto; padding: 20px 40px;" onclick="changePage(2)">A LITTLE SURPRISE ✨</button>
     </div>
 
-    <div id="s2" class="card">
+    <div id="s2" class="section card">
         <h1>Hello Annu! 😊</h1>
         <p>Pata nahi ye dosti kahan tak jayegi, par itna zaroor pata hai ki tumse baat karke accha lagta hai.</p>
-        <button class="btn" onclick="go(3)">Keep Reading ➡</button>
+        <button class="btn" onclick="changePage(3)">Aage Padho ➡</button>
     </div>
 
-    <div id="s3" class="card">
-        <h1>New Beginnings ✨</h1>
+    <div id="s3" class="section card">
+        <h1>For You ✨</h1>
         <p>Annu, har ek dost ki apni ek jagah hoti hai, par tumhare saath ye shuruat thodi special hai. <br><br><b>Dost banoge?</b></p>
         <button class="btn" onclick="celebrate()">Yes, Why Not! ✨</button>
-        <button class="btn" style="background: #444;" onclick="go(5)">no sorry</button>
+        <button class="btn" style="background: #444;" onclick="changePage(5)">no sorry</button>
     </div>
 
-    <div id="s4" class="card">
-        <h1 style="font-size: 3rem;">🌸</h1>
-        <h1>Thank You Annu!</h1>
-        <p>Is sweet shuruat ke liye shukriya. arun is happy to have you as a friend! 😊</p>
+    <div id="s4" class="section card">
+        <h1 style="font-size: 3.5rem;">🌸</h1>
+        <h1>Shukriya Annu!</h1>
+        <p>Is sweet shuruat ke liye thank you. arun is really happy to have you as a friend! 😊</p>
     </div>
 
-    <div id="s5" class="card">
-        <h1 style="font-size: 3rem;">😔</h1>
+    <div id="s5" class="section card">
+        <h1 style="font-size: 3.5rem;">😔</h1>
         <h1>Oops...</h1>
         <p>Sorry Annu, for wasting your time.</p>
-        <button class="btn" onclick="go(1)">Go Back</button>
+        <button class="btn" onclick="changePage(1)">Back</button>
     </div>
 
     <script>
-        function go(n) {
-            document.getElementById('s1').style.display = 'none';
-            document.getElementById('s2').style.display = 'none';
-            document.getElementById('s3').style.display = 'none';
-            document.getElementById('s4').style.display = 'none';
-            document.getElementById('s5').style.display = 'none';
-            document.getElementById('s' + n).style.display = 'block';
+        // Page switching function
+        function changePage(pageId) {
+            // Hide all sections
+            const sections = document.getElementsByClassName('section');
+            for (let i = 0; i < sections.length; i++) {
+                sections[i].style.display = 'none';
+            }
+            // Show the target section
+            document.getElementById('s' + pageId).style.display = 'block';
         }
 
+        // Celebration effect
         function celebrate() {
-            go(4);
-            for(let i=0; i<30; i++) {
+            changePage(4);
+            for(let i=0; i<40; i++) {
                 setTimeout(() => {
                     const f = document.createElement('div');
                     f.innerHTML = '🌸';
@@ -110,13 +112,17 @@
                     f.style.bottom = '-50px';
                     f.style.fontSize = '25px';
                     f.style.transition = '3s linear';
+                    f.style.zIndex = '100';
                     document.body.appendChild(f);
-                    setTimeout(() => { f.style.bottom = '110vh'; f.style.opacity = '0'; }, 100);
+                    setTimeout(() => { 
+                        f.style.bottom = '110vh'; 
+                        f.style.opacity = '0'; 
+                    }, 100);
                     setTimeout(() => f.remove(), 3000);
                 }, i * 100);
             }
         }
     </script>
 </body>
-        </html>
-        
+    </html>
+    
